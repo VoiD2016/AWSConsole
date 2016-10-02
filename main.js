@@ -1,0 +1,1 @@
+let APP = require('./app');

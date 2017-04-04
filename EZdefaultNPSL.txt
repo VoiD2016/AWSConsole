@@ -1,0 +1,1390 @@
+EZlog_Open( File_Name = "mosqit_np4.log");                            
+
+EZlog_SetLog( File,                                            
+              DRV, DRV_API + DRV_PRM_PUP,
+              Debug); 
+
+EZapiChannel_Create( Channel = 0 );
+
+EZapiChannel_Config ( Channel = 0,
+        Command = EZapiChannel_ConfigCmd_SetExtMemParams,
+        /*
+        Ext_Search_Mem_Type = DDR3_16BIT,
+        Ext_Search_Mem_Size = 512,
+        Ext_Search_Mem_Interfaces = 4,
+        Ext_Search_Mem_Clock_Frequency = 666,
+        Ext_Search_Mem_Speed_Bin = 1066G,
+        Ext_Search_Mem_RTT[0] = 0,
+        Ext_Search_Mem_RTT[1] = 0,
+        Ext_Search_Mem_RTT[2] = 0,
+        Ext_Search_Mem_RTT[3] = 0,
+        Ext_Search_Mem_RTT[4] = 0,
+        Ext_Search_Mem_RTT[5] = 0,
+        Ext_Search_Mem_RTT[6] = 0,
+        Ext_Search_Mem_RTT[7] = 0,
+        Ext_Search_Mem_Address_Mirror[0] = FALSE,
+        Ext_Search_Mem_Address_Mirror[1] = FALSE,
+        Ext_Search_Mem_Address_Mirror[2] = FALSE,
+        Ext_Search_Mem_Address_Mirror[3] = FALSE,
+        Ext_Search_Mem_Address_Mirror[4] = FALSE,
+        Ext_Search_Mem_Address_Mirror[5] = FALSE,
+        Ext_Search_Mem_Address_Mirror[6] = FALSE,
+        Ext_Search_Mem_Address_Mirror[7] = FALSE,
+        Ext_TM_Mem_Type = DDR3_16BIT,
+        Ext_TM_Mem_Size = 512,
+        Ext_TM_Mem_Interfaces = 4,
+        Ext_TM_Mem_Clock_Frequency = 666,
+        Ext_TM_Mem_Speed_Bin = 1066G,
+        Ext_TM_Mem_RTT[0] = 0,
+        Ext_TM_Mem_RTT[1] = 0,
+        Ext_TM_Mem_RTT[2] = 0,
+        Ext_TM_Mem_RTT[3] = 0,
+        Ext_TM_Mem_RTT[4] = 0,
+        Ext_TM_Mem_RTT[5] = 0,
+        Ext_TM_Mem_RTT[6] = 0,
+        Ext_TM_Mem_RTT[7] = 0,
+        Ext_TM_Mem_Address_Mirror[0] = FALSE,
+        Ext_TM_Mem_Address_Mirror[1] = FALSE,
+        Ext_TM_Mem_Address_Mirror[2] = FALSE,
+        Ext_TM_Mem_Address_Mirror[3] = FALSE,
+        Ext_TM_Mem_Address_Mirror[4] = FALSE,
+        Ext_TM_Mem_Address_Mirror[5] = FALSE,
+        Ext_TM_Mem_Address_Mirror[6] = FALSE,
+        Ext_TM_Mem_Address_Mirror[7] = FALSE,
+        */
+
+        Ext_Search_Mem_Type = DDR3_16BIT,
+        Ext_Search_Mem_Size = 1024,
+        Ext_Search_Mem_Clock_Frequency = 333333,
+        Ext_Search_Mem_Interfaces = 4,
+        Ext_Search_Mem_Speed_Bin = 1600K,
+        Ext_Search_Mem_Address_Mirror[0] = FALSE,
+        Ext_Search_Mem_Address_Mirror[1] = FALSE,
+        Ext_Search_Mem_Address_Mirror[2] = FALSE,
+        Ext_Search_Mem_Address_Mirror[3] = FALSE,
+        Ext_Search_Mem_Address_Mirror[4] = FALSE,
+        Ext_Search_Mem_Address_Mirror[5] = FALSE,
+        Ext_Search_Mem_Address_Mirror[6] = FALSE,
+        Ext_Search_Mem_Address_Mirror[7] = FALSE,
+
+        Ext_Stat_Mem_Type = INACTIVE, /* RLDRAM2_18BIT, */
+        Ext_Stat_Mem_Size = 0, /* 576, */
+        Ext_Stat_Mem_Interfaces = 0, /* 2, */
+        Ext_Stat_Mem_Clock_Frequency = 333333,
+        Ext_Stat_Mem_ECC = FALSE,
+
+        Ext_TM_Mem_Type = DDR3_16BIT, /* INACTIVE, */
+        ExtTMMemSize = 1024,
+        ExtTMMemInterfaces = 4,
+        Ext_TM_Mem_Clock_Frequency = 333333,
+        Ext_TM_Mem_Speed_Bin = 1600K,
+        Ext_TM_Mem_Address_Mirror[0] = FALSE,
+        Ext_TM_Mem_Address_Mirror[1] = FALSE,
+        Ext_TM_Mem_Address_Mirror[2] = FALSE,
+        Ext_TM_Mem_Address_Mirror[3] = FALSE,
+        Ext_TM_Mem_Address_Mirror[4] = FALSE,
+        Ext_TM_Mem_Address_Mirror[5] = FALSE,
+        Ext_TM_Mem_Address_Mirror[6] = FALSE,
+        Ext_TM_Mem_Address_Mirror[7] = FALSE,
+
+        Ext_TCAM_Type = INACTIVE,
+        RX_Lanes = 24,
+        TX_Lanes = 24, 
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = XAUI,
+   IF_Number = 0,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 4,
+   TX_Lanes = 4,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 0,
+   TX_Group = 0,
+   TM_Bypass = TRUE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = XAUI,
+   IF_Number = 1,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 4,
+   TX_Lanes = 4,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 0,
+   TX_Group = 0,
+   TM_Bypass = TRUE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = XAUI,
+   IF_Number = 2,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 4,
+   TX_Lanes = 4,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 0,
+   TX_Group = 0,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = XAUI,
+   IF_Number = 3,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 4,
+   TX_Lanes = 4,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 0,
+   TX_Group = 0,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 0,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 1,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 2,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 3,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 4,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 5,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 6,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 7,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 8,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 9,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 10,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 11,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 12,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 13,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 14,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 15,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 16,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 17,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 18,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 19,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 20,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 21,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 22,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = SGMII,
+   IF_Number = 23,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 2,
+   TX_Group = 2,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = Auxiliary,
+   IF_Number = HOST_SGMII_0,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 4,
+   TX_Group = 4,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = Auxiliary,
+   IF_Number = HOST_SGMII_1,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 4,
+   TX_Group = 4,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = Auxiliary,
+   IF_Number = LOOPBACK_0,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 6,
+   TX_Group = 6,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiChannel_Config( Channel = 0,
+   Command = EZapiChannel_ConfigCmd_SetIFParams,
+   IF_Type = Auxiliary,
+   IF_Number = LOOPBACK_1,
+   RX_Enable = TRUE,
+   TX_Enable = TRUE,
+   RX_Lanes = 1,
+   TX_Lanes = 1,
+   RX_Channels = 1,
+   TX_Channels = 1,
+   RX_Group = 6,
+   TX_Group = 6,
+   TM_Bypass = FALSE,
+   OCFD_Group = UNDEFINED,
+   RX_Cell_Mode = FALSE,
+   TX_Cell_Mode = FALSE,
+   TX_Cell_Mode_Contexts = 1,
+   Rate = 0,
+);
+
+EZapiStat_Config( Channel = 0,
+   Command = EZapiStat_ConfigCmd_SetGroupParams,
+   Interface = INT_0,
+   Group = 0,
+   Group_Type = LONG,
+   Start_Counter = 0,
+   Num_Counters = 128,
+   Enable_Shadow_Group = False,
+   Enable_Threshold_Msg = False,
+
+);
+
+
+
+
+
+EZapiChannel_Initialize( Channel = 0 );
+
+//---------------------------------------
+
+EZapiStat_Config( Channel = 0,
+   Command = EZapiStat_ConfigCmd_SetLongCounters,
+   Start_Counter = 0x00,
+   Num_Counters = 0x80,
+   Value = 0,
+   Value_MSB = 0,
+);
+
+EZapiStruct_PartitionConfig(
+   Command = EZapiStruct_PartitionConfigCmd_SetPartitionParams,
+   Partition = 0,
+   Channel = 0,
+);
+
+
+EZapiChannel_Config (
+   Channel = 0,
+   Command = EZapiChannel_ConfigCmd_LoadCode,
+   File = "/EZdrvr/mcode/AllToAll_MDF.obj"
+);
+
+EZapiChannel_Config (
+   Channel = 0,
+   Command = EZapiChannel_ConfigCmd_LoadCode,
+   File = "/EZdrvr/mcode/AllToAll_PRS.obj"
+);
+
+EZapiChannel_Config (
+   Channel = 0,
+   Command = EZapiChannel_ConfigCmd_LoadCode,
+   File = "/EZdrvr/mcode/AllToAll_RSV.obj"
+);
+
+EZapiChannel_Config (
+   Channel = 0,
+   Command = EZapiChannel_ConfigCmd_LoadCode,
+   File = "/EZdrvr/mcode/AllToAll_SRC.obj"
+);
+ 
+
+EZapiStruct_Create (Channel = 0,
+   Struct_Number = 1,
+   Partition= 0,
+   Struct_Type = table,
+   Struct_Memory_Area = Internal,
+   Key_Size = 2,
+   Result_Size = 16,
+   Max_Entries = 512,
+ );
+EZapiStruct_Config ( Channel = 0,
+   Struct_Number = 1,
+   Partition= 0,
+   Command = EZapiStruct_ConfigCmd_SetTableParams,
+      Add_Msg = FALSE,
+ );
+ 
+
+EZapiStruct_Create (Channel = 0,
+   Struct_Number = 2,
+   Partition= 0,
+   Struct_Type = table,
+   Struct_Memory_Area = Internal,
+   Key_Size = 1,
+   Result_Size = 32,
+   Max_Entries = 32,
+ );
+EZapiStruct_Config ( Channel = 0,
+   Struct_Number = 2,
+   Partition= 0,
+   Command = EZapiStruct_ConfigCmd_SetTableParams,
+      Add_Msg = FALSE,
+ );
+EZapiStruct_PartitionConfig (  Partition = 0, Command = EZapiStruct_PartitionConfigCmd_LoadPartition );
+
+
+EZapiTM_Config( Channel = 0,
+   Command = ezapitm_configcmd_addentitytopologyparams,
+   Entity = 0,
+   Level = 0,
+   NextLevel = 1,
+   FirstNextLevelEntity = 0,
+   NumNextLevelEntities = 1,
+);
+
+
+EZapiTM_Config( Channel = 0,
+   Command = ezapitm_configcmd_addentitytopologyparams,
+   Entity = 0,
+   Level = 1,
+   NextLevel = 2,
+   FirstNextLevelEntity = 0,
+   NumNextLevelEntities = 4,
+);
+
+
+for ( iLoopVar = 0 , 4 , 1 )
+{
+EZapiTM_Config( Channel = 0,
+   Command = ezapitm_configcmd_addentitytopologyparams,
+   Entity = iLoopVar,
+   Level = 2,
+   NextLevel = 3,
+   FirstNextLevelEntity = ( iLoopVar * 4),
+   NumNextLevelEntities = 4,
+   L34Mode = 8_L4_ENTITIES,
+);
+}
+
+
+EZapiTM_Config( Channel = 0,
+   Command = EZapiTM_ConfigCmd_SetEntityModeParams,
+   Entity_mode = ENABLED,
+   Level = 0,
+   Entity = 0);
+
+
+
+for ( iLoopVar=1,32,1 )
+{
+EZapiTM_Config( Channel = 0,
+   Command = EZapiTM_ConfigCmd_SetEntityModeParams,
+   Entity_mode = DISABLED,
+   Level = 0,
+   Entity = iLoopVar,
+);
+};
+
+
+EZapiTM_Config( Channel = 0,
+   Command = EZapiTM_ConfigCmd_SetEntityModeParams,
+   Entity_mode = ENABLED,
+   Level = 1,
+   Entity = 0);
+
+
+
+for ( iLoopVar=0,4,1 )
+{
+EZapiTM_Config( Channel = 0,
+   Command = EZapiTM_ConfigCmd_SetEntityModeParams,
+   Entity_mode = ENABLED,
+   Level = 2,
+   Entity = iLoopVar,
+);
+};
+
+
+for ( iLoopVar=0,16,1 )
+{
+EZapiTM_Config( Channel = 0,
+   Command = EZapiTM_ConfigCmd_SetEntityModeParams,
+   Entity_mode = ENABLED,
+   Level = 3,
+   Entity = iLoopVar,
+);
+};
+
+
+for ( iLoopVar=0,128,1 )
+{
+EZapiTM_Config( Channel = 0,
+   Command = EZapiTM_ConfigCmd_SetEntityModeParams,
+   Entity_mode = ENABLED,
+   Level = 4,
+   Entity = iLoopVar,
+);
+};
+
+
+#############################################################################################################
+#########################                      ##############################################################
+######################### Port Table structure ##############################################################
+#########################                      ##############################################################
+#############################################################################################################
+#       Struct 1 (result of Port-Table lookup):
+################################################################################
+#
+# TM bypass ports entries 
+# LS key byte = out IF number
+# MS key byte = 0 (TM bypass)
+# priority = 2 for all entries
+################################################################################
+#//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#// Important note:
+#///////////////////
+#// The results entries that correspond to a port that is configured as does not exist on this specific chip are
+#// commented out  .
+#// It is important to remove this entery (using comment), in order to protect the SW from getting stuck in case
+#// that the frame will contain key data destined to a port that does not exist.
+#// This way, in case that the frame will have such invalid key data, i.e. of a destination port that does not
+#// exist, there will be no entry for this port, and thus, as no match will be returned form the lookup,
+#// the packet will be dropped, instead of being sent to the non-existance port (which otherwise would probably
+#// have caused the chip to get stuck due to this foul).
+#// Port data table (The port configuration SRAM) does not have such a protection, so user should carefuly check
+#// that the port data's configuration is correct (verify that the destination port is correct and exists for
+#// the current chip's configuration) in order to prevent frames from getting stuck in the chip.
+#//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#
+# 
+#
+#                                                                               Ctrl
+#                                                                               Valid (0) = 1
+#                                                                               match (4) = 1
+#                                                                               mode(5) = 0(according to the frame data and the lookup result)
+#                                                                               TM Hdr(6) = 1
+#                                                                               (0=bypass)
+#                                                                               |
+#                                                             Port              |               Compressed_tm_header (16 bytes)
+#                                                             |                 |               Starts here
+#                                                             |                 |               | TM_HDR_DATA
+#                                                             |                 |               |          Reserved = FF when TM is Bypassed, all zerod when TM is used.
+#                                                             |                 |    User       |    
+#                                                             |                 |    header     |    
+#                                                             |  TM             |    key        |    Dest.
+#                                                             |  (0 = Bypass,   |    (is taken  |    Port/QQ_PSID (7 LSbits)
+#                                                             |  1 = Use TM)    |    from the   |    |
+#                                                             |  |              |    Frame      |    |  Priority/COS (2 MSbits)
+#                                                             |  |              |    Or from    |    |  |
+#                                                             |  |              |    PORT_DATA  |    |  |  Qin
+#                                                             |  |              |    so it is   |    |  |  Bypass
+#                                                             |  |              |    not rlvnt  |    |  |  Ind
+#                                                             |  |              |    in the     |    |  |  (=True when using the TM)
+#                                                             |  |              |    rslt.      |    |  |  |
+#                                                             |  |              |  here this    |    |  |  |
+#                                                             |  |              | field is only |    |  |  |
+#                                                             |  |              | a placeholder |    |  |  |
+#                                                             |  |              |    |          |    |  |  |
+#                                                             |  |              |    |          |Spcl|  |  |
+#                                                             |  |              |    |          | Q  |  |  |
+#                                                             |  |              |    |          | Ind|  |  |
+#                                                             |  |              |    |          | |  |  |  |
+#                                                             |  |              LS BYTE......   | |  |  |  |          ...MS BYTE
+#                                                             V  V              V    V          V V  V  V  V                   V
+# XAUI interfaces:  XAUI_0 = 0 ....  XAUI_X = X   ....  XAUI_9 = 9
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h00 00, Result = 0h11   FF         FFFF 01 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h01 00, Result = 0h11   FF         FFFF 00 00 FFFF FFFFFFFFFFFFFFFF, );
+/* Commented, as these ports does not exist at the current chip's configuration (with TM bypass)
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h02 00, Result = 0h11   FF         FFFF 03 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h03 00, Result = 0h11   FF         FFFF 02 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h04 00, Result = 0h11   FF         FFFF 05 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h05 00, Result = 0h11   FF         FFFF 04 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h06 00, Result = 0h11   FF         FFFF 07 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h07 00, Result = 0h11   FF         FFFF 06 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h08 00, Result = 0h11   FF         FFFF 09 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h09 00, Result = 0h11   FF         FFFF 08 00 FFFF FFFFFFFFFFFFFFFF, );
+*/
+
+/* Commented, as these ports does not exist at the current chip's configuration (with TM bypass)
+# Interlaken interfaces:  Interlaken_0 = 10, Interlaken_1 = 11, [Interlaken_2 = 12, will be available at phase 2]
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h0A 00, Result = 0h11   FF         FFFF 0B 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h0B 00, Result = 0h11   FF         FFFF 0A 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h0C 00, Result = 0h11   FF         FFFF 0A 00 FFFF FFFFFFFFFFFFFFFF, );
+*/                                                                                               
+
+/* Commented, as these ports does not exist at the current chip's configuration (with TM bypass)
+# SGMII interfaces:  SGMII_0 = 16 ....  SGMII_X = (X+16)   ....  SGMII_23 = 39
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h10 00, Result = 0h11   FF         FFFF 11 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h11 00, Result = 0h11   FF         FFFF 10 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h12 00, Result = 0h11   FF         FFFF 13 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h13 00, Result = 0h11   FF         FFFF 12 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h14 00, Result = 0h11   FF         FFFF 15 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h15 00, Result = 0h11   FF         FFFF 14 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h16 00, Result = 0h11   FF         FFFF 17 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h17 00, Result = 0h11   FF         FFFF 16 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h18 00, Result = 0h11   FF         FFFF 19 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h19 00, Result = 0h11   FF         FFFF 18 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1A 00, Result = 0h11   FF         FFFF 1B 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1B 00, Result = 0h11   FF         FFFF 1A 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1C 00, Result = 0h11   FF         FFFF 1D 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1D 00, Result = 0h11   FF         FFFF 1C 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1E 00, Result = 0h11   FF         FFFF 1F 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1F 00, Result = 0h11   FF         FFFF 1E 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h20 00, Result = 0h11   FF         FFFF 21 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h21 00, Result = 0h11   FF         FFFF 20 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h22 00, Result = 0h11   FF         FFFF 23 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h23 00, Result = 0h11   FF         FFFF 22 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h24 00, Result = 0h11   FF         FFFF 25 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h25 00, Result = 0h11   FF         FFFF 24 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h26 00, Result = 0h11   FF         FFFF 27 00 FFFF FFFFFFFFFFFFFFFF, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h27 00, Result = 0h11   FF         FFFF 26 00 FFFF FFFFFFFFFFFFFFFF, );
+*/
+
+################################################################################
+#TM ports entries 
+# Key's LSbyte = out IF number
+# Key's MSbyte = 1 (TM exists)
+# In the all results, the Qin bypass indicator of the TM is set to 1.
+################################################################################
+/* Commented, as these ports does not exist at the current chip's configuration (with TM)
+# XAUI interfaces:  XAUI_0 = 0 ....  XAUI_X = X   ....  XAUI_9 = 9
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h00 01, Result = 0h51   FF         0000 01 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h01 01, Result = 0h51   FF         0000 00 00 8000 0000000000000000, );
+*/
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h02 01, Result = 0h51   FF         0000 03 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h03 01, Result = 0h51   FF         0000 02 00 8000 0000000000000000, );
+/* Commented, as these ports does not exist at the current chip's configuration (with TM)
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h04 01, Result = 0h51   FF         0000 05 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h05 01, Result = 0h51   FF         0000 04 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h06 01, Result = 0h51   FF         0000 07 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h07 01, Result = 0h51   FF         0000 06 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h08 01, Result = 0h51   FF         0000 09 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h09 01, Result = 0h51   FF         0000 08 00 8000 0000000000000000, );
+*/
+
+/* Commented, as these ports does not exist at the current chip's configuration (with TM)
+# Interlaken interfaces:  Interlaken_0 = 10, Interlaken_1 = 11, [Interlaken_2 = 12, will be available at phase 2]
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h0A 01, Result = 0h51   FF         0000 0B 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h0B 01, Result = 0h51   FF         0000 0A 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h0C 01, Result = 0h51   FF         0000 0A 00 8000 0000000000000000, );
+*/
+
+# SGMII interfaces:  SGMII_0 = 16 ....  SGMII_X = (X+16)   ....  SGMII_23 = 39
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h10 01, Result = 0h51   FF         0000 11 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h11 01, Result = 0h51   FF         0000 10 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h12 01, Result = 0h51   FF         0000 13 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h13 01, Result = 0h51   FF         0000 12 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h14 01, Result = 0h51   FF         0000 15 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h15 01, Result = 0h51   FF         0000 14 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h16 01, Result = 0h51   FF         0000 17 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h17 01, Result = 0h51   FF         0000 16 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h18 01, Result = 0h51   FF         0000 19 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h19 01, Result = 0h51   FF         0000 18 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1A 01, Result = 0h51   FF         0000 1B 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1B 01, Result = 0h51   FF         0000 1A 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1C 01, Result = 0h51   FF         0000 1D 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1D 01, Result = 0h51   FF         0000 1C 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1E 01, Result = 0h51   FF         0000 1F 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h1F 01, Result = 0h51   FF         0000 1E 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h20 01, Result = 0h51   FF         0000 21 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h21 01, Result = 0h51   FF         0000 20 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h22 01, Result = 0h51   FF         0000 23 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h23 01, Result = 0h51   FF         0000 22 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h24 01, Result = 0h51   FF         0000 25 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h25 01, Result = 0h51   FF         0000 24 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h26 01, Result = 0h51   FF         0000 27 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h27 01, Result = 0h51   FF         0000 26 00 8000 0000000000000000, );
+
+#// HOST SGMII can only be configured when via TM
+#// Therefore, when not using the TM, as these ports will not be valid,
+#// there will be no result, causing the match bit to be zero,
+#// and thus that the packet will be discarded.
+# HOST_SGMII interfaces:  HOST_SGMII_0 = 64 HOST_SGMII_1 = 65
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h40 01, Result = 0h51   FF         0020 01 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h41 01, Result = 0h51   FF         0020 00 00 8000 0000000000000000, );
+
+
+/* ----------->>>
+   Uncomment the following 2 lines and put thei'r corresponding lines (which have the same keys) in comment,
+   in order to test loopback. This will send from port 2 to TM_loopback_0, and from port 3 to TM_loopback_1 */
+/*
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h02 01, Result = 0h51   FF         0020 08 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h03 01, Result = 0h51   FF         0020 09 00 8000 0000000000000000, );
+   ------------------------------->>> */
+
+
+# TM_LOOPBACK 0..1:  TM_LOOPBACK_0 = 72 TM_LOOPBACK_1 = 73
+/* TM_loopback_0 will pass the frames to port 2, TM_loopback_1 will pass the frames to port 3. */
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h48 01, Result = 0h51   FF         0000 02 00 8000 0000000000000000, );
+EZapiStruct_AddEntry (channel = 0, struct_number = 1, Key = 0h49 01, Result = 0h51   FF         0000 03 00 8000 0000000000000000, );
+
+
+
+
+#############################################################################################################
+#########################                             #######################################################
+######################### User Header Table structure #######################################################
+#########################                             #######################################################
+#############################################################################################################
+#       Struct 2 (result of User Header-Table lookup):
+#           byte 0(32):             Reserved (valid and match bits are set)
+#           byte 1(33):             Add size - specify how many bytes to add to   the frame. maximum value is 29 bytes. 0 means do not add.
+#           byte 2(34):             Cut size - specify how many bytes to cut from the frame. maximum value should not excxeed the frame's size. 0 means do not cut.
+#           byte 3..n(35..m):       User header data. n should be equal to the value in Add field. (Max is 29 bytes).
+#           byte n+1..31(m+1..63):  not used. Set to FF in order to make the result easily readable, but any value is OK as this is ignored.
+#
+################################################################################
+#                                                                            Ctrl
+#                                                                            (vld,
+#                                                                            mtch)
+#                                                                            |
+#                                                                            |  AddSz
+#                                                                            |  |
+#                                                                            |  |  CutSz
+#                                                                            |  |  |
+#                                                                            |  |  |  UserHeaderData
+#                                                                            |  |  |  (Up to 29 bytes)
+#                                                                            |  |  |  |
+# User header, 0 bytes, 00                                                   |  |  |  |
+# Entry key 0: No user header, the (old) entry is                            |  |  |  |
+# commented out, so match sahould be 0                                       V  V  V  V
+/* Key # 0 is not necesary as the code checks for this value and in case of using key=0 the user header procdere is skipped.
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h00, Result = 0h11 00 00 00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+*/
+# User header, 1 bytes, 01
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h01, Result = 0h11 01 00 01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 2 bytes, 0202
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h02, Result = 0h11 02 00 0102FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 3 bytes, 030303
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h03, Result = 0h11 03 00 010203FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 4 bytes, 04040404
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h04, Result = 0h11 04 00 01020304FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 5 bytes, 0505050505
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h05, Result = 0h11 05 00 0102030405FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 6 bytes, 060606060606
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h06, Result = 0h11 06 00 010203040506FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 7 bytes, 07070707070707
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h07, Result = 0h11 07 00 01020304050607FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 8 bytes, 0808080808080808
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h08, Result = 0h11 08 00 0102030405060708FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 9 bytes, 090909090909090909
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h09, Result = 0h11 09 00 010203040506070809FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 10 bytes, 0A0A0A0A0A0A0A0A0A0A
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h0A, Result = 0h11 0A 00 0102030405060708090AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 11 bytes, 0B0B0B0B0B0B0B0B0B0B0B
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h0B, Result = 0h11 0B 00 0102030405060708090A0BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 12 bytes, 0C0C0C0C0C0C0C0C0C0C0C0C
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h0C, Result = 0h11 0C 00 0102030405060708090A0B0CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 13 bytes, 0D0D0D0D0D0D0D0D0D0D0D0D0D
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h0D, Result = 0h11 0D 00 0102030405060708090A0B0C0DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 14 bytes, 0E0E0E0E0E0E0E0E0E0E0E0E0E0E
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h0E, Result = 0h11 0E 00 0102030405060708090A0B0C0D0EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 15 bytes, 0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h0F, Result = 0h11 0F 00 0102030405060708090A0B0C0D0E0FFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 16 bytes, 10101010101010101010101010101010
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h10, Result = 0h11 10 00 0102030405060708090A0B0C0D0E0F10FFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 17 bytes, 1111111111111111111111111111111111
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h11, Result = 0h11 11 00 0102030405060708090A0B0C0D0E0F1011FFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 18 bytes, 121212121212121212121212121212121212
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h12, Result = 0h11 12 00 0102030405060708090A0B0C0D0E0F101112FFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 19 bytes, 13131313131313131313131313131313131313
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h13, Result = 0h11 13 00 0102030405060708090A0B0C0D0E0F10111213FFFFFFFFFFFFFFFFFFFF, );
+
+# User header, 20 bytes, 1414141414141414141414141414141414141414
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h14, Result = 0h11 14 00 0102030405060708090A0B0C0D0E0F1011121314FFFFFFFFFFFFFFFFFF, );
+
+# User header, 21 bytes, 151515151515151515151515151515151515151515
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h15, Result = 0h11 15 00 0102030405060708090A0B0C0D0E0F101112131415FFFFFFFFFFFFFFFF, );
+
+# User header, 22 bytes, 16161616161616161616161616161616161616161616
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h16, Result = 0h11 16 00 0102030405060708090A0B0C0D0E0F10111213141516FFFFFFFFFFFFFF, );
+
+# User header, 23 bytes, 1717171717171717171717171717171717171717171717
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h17, Result = 0h11 17 00 0102030405060708090A0B0C0D0E0F1011121314151617FFFFFFFFFFFF, );
+
+# User header, 24 bytes, 181818181818181818181818181818181818181818181818
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h18, Result = 0h11 18 00 0102030405060708090A0B0C0D0E0F101112131415161718FFFFFFFFFF, );
+
+# User header, 25 bytes, 19191919191919191919191919191919191919191919191919
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h19, Result = 0h11 19 00 0102030405060708090A0B0C0D0E0F10111213141516171819FFFFFFFF, );
+
+# User header, 26 bytes, 1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A1A
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h1A, Result = 0h11 1A 00 0102030405060708090A0B0C0D0E0F101112131415161718191AFFFFFF, );
+
+# User header, 27 bytes, 1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B1B
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h1B, Result = 0h11 1B 00 0102030405060708090A0B0C0D0E0F101112131415161718191A1BFFFF, );
+
+# User header, 28 bytes, 1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C1C
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h1C, Result = 0h11 1C 00 0102030405060708090A0B0C0D0E0F101112131415161718191A1B1CFF, );
+
+# User header, 29 bytes, 1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D1D
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h1D, Result = 0h11 1D 00 0102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D, );
+
+# User header, -3 bytes (cut 3 bytes from the message)
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h1E, Result = 0h11 00 03 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+# User header, -2+1 bytes (cut 2 byte(s) from the message and add 1 byte)
+EZapiStruct_AddEntry (channel = 0, struct_number = 2, Key = 0h1F, Result = 0h11 01 02 01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF, );
+
+
+
+
+
+
+
+#########################################################################################
+######                                                                             ######
+###### Port Configuration SRAM (Used by the application to set PORT_DATA's values) ######
+######                                                                             ######
+#########################################################################################
+# reference: chapter 2.8.3 Write Memory at NPSL guide, 3.1.10 Port Configuration SRAM at programmer's guide.
+#
+#                                                                                                                                                          PortData0:                          PortData1:                   PortData2:                  PortData3:
+#                                                                                                                                                          Special                             |                            |                           |
+#                                                                                                                                                          queue                               |                            |                           |
+#                                                                                                                                                          indicator                           |                            |                           |
+#                                                                                                                                                          (0x20 when                          |                            |                           |
+#                                                                                                                                                          sending to                          |                            |                           |
+#                                                                                                                                                          TM_LPB                              |                            |                           |
+#                                                                                                                                                          Or                                  |                            |                           |
+#                                                                                                                                                          HOSTSGMII)                          |                            |                           |
+#                                                                                                                                                          |                                   |                            |                           |
+#                                                                                                                                                          | Compressed                        |                            |                           |
+#                                                                                                                                                          | TM header                         |                            |                           |
+#                                                                                                                                                          | Starts here                       |                            |                           |
+#                                                                                                                                                          |  |                                |                            |                           |
+#                                                                                                                                                          |  |                                |                            |                           |
+#                                                                                                                                                          |  |                                |                            |                           |
+#                                                                                                                                                          |  |  User                          |  Qin                       |                           |
+#                                                                                                                                                          |  |  Header                        |  Bypass                    |                           |
+#                                                                                                                                                          |  |  Key                           |  Ind = True                |                           |
+#                                                                                                                                                          |  |  |                             |  |                         |                           |
+#                                                                                                                                                          |  |  |  Ctrls:                     |  |                         |                           |
+#                                                                                                                                                          |  |  |  Valid (0) = 1              |  |  Priority/COS           |                           |
+#                                                                                                                                                          |  |  |  match (4) = 1              |  |  (2MSbits)              |                           |
+#                                                                                                                                                          |  |  |  mode(5) = 1(Port CfgSram)  |  |  |                      |                           |
+#                                                                                                                                                          |  |  |  TM Hdr(6)(1=Use TM)        |  |  |                      |                           |
+#                                                                                                                                                          |  |  |  |        (0=bypass)        |  |  |                      |                           |
+#                                                                                                                                                          |  |  |  |                          |  |  |  Dest Port/PSID      |                           |
+#                                                                                                                                                          |  |  |  |                          |  |  |  (7 LSbits)          |                           |
+#                                                                                                                                                          |  |  |  |                          |  |  |  |                   |                           |
+#                                                                                                                                                          |  |  |  |                          |  |  |  |                   |                           |
+# XAUI 0..9 (Ports 0..9)                                                                                                                                   V  V  V  V                          V  V  V  V                   V                           V
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  0,           User_Data[0] = 0x00 00 00 31,       User_Data[1] = 0x00 80 00 01, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  1,           User_Data[0] = 0x00 00 00 31,       User_Data[1] = 0x00 80 00 00, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  2,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 03, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  3,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 02, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+/*
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  4,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 05, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  5,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 04, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  6,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 07, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  7,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 06, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  8,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 09, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  9,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 08, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+*/
+
+
+# Interlaken 0..2 (Ports 10..12) [Interlaken_2 = 12, will be available at phase 2 and cant be initialized at phase 1, thus it is commented now].
+/*
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = INTERLAKEN, IF_Number = 0,            User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 0B, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = INTERLAKEN, IF_Number = 1,            User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 0A, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+#EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = INTERLAKEN, IF_Number = 2,            User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 0A, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+*/
+
+# SGMII 0..23 (Ports 16..39) /  QSGMII 0..47 (Ports 16..63)
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  0,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 11, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  1,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 10, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  2,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 13, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  3,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 12, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  4,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 15, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  5,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 14, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  6,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 17, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  7,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 16, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  8,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 19, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number =  9,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 18, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 10,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 1B, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 11,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 1A, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 12,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 1D, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 13,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 1C, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 14,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 1F, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 15,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 1E, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 16,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 21, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 17,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 20, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 18,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 23, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 19,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 22, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 20,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 25, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 21,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 24, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 22,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 27, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = SGMII,      IF_Number = 23,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 26, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+/*
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 24,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 29, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 25,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 28, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 26,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 2B, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 27,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 2A, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 28,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 2D, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 29,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 2C, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 30,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 2F, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 31,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 2E, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 32,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 31, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 33,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 30, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 34,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 33, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 35,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 32, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 36,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 35, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 37,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 34, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 38,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 37, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 39,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 36, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 40,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 39, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 41,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 38, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 42,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 3B, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 43,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 3A, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 44,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 3D, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 45,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 3C, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 46,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 3F, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = QSGMII,     IF_Number = 47,           User_Data[0] = 0x00 00 00 71,       User_Data[1] = 0x00 80 00 3E, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+*/
+
+# HOST SGMII 0..1 (Ports 64..65)
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = AUXILIARY,   IF_Number = HOST_SGMII_0, User_Data[0] = 0x20 00 00 71,      User_Data[1] = 0x00 80 00 01, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = AUXILIARY,   IF_Number = HOST_SGMII_1, User_Data[0] = 0x20 00 00 71,      User_Data[1] = 0x00 80 00 00, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+
+/* Uncomment the following 2 lines and put thei'r corresponding lines in comment, in order to test loopback,
+   This will send from port 2 to TM_loopback_0, and from port 3 to TM_loopback_1.
+   Note that all traffic that is destined to the TM_LOOPBACK or to HOST_SGMII ports must have
+   bit "Special queue indicator" set to 1, and their destination's port's MS nibble is zeroed.
+*/
+/*
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  2,           User_Data[0] = 0x20 00 00 71,       User_Data[1] = 0x00 80 00 09, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = XAUI,       IF_Number =  3,           User_Data[0] = 0x20 00 00 71,       User_Data[1] = 0x00 80 00 08, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+*/
+
+# TM LOOPBACK 0..1 (Ports 72..73)
+/* TM_loopback_0 will pass the frames to port 2, TM_loopback_1 will pass the frames to port 3.
+   Important: when working in "according to the frame's content" mode, the TM_LOOPBACK's enteries
+   should still work in "according to PORT_DATA" mode, in order to prevent frames from getting stuck
+   in the NP, or a change to the frame's content can also be done, in order to prevent such a problem.
+*/
+/*
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = AUXILIARY,  IF_Number = LOOPBACK_0,   User_Data[0] = 0x20 00 00 71,       User_Data[1] = 0x00 80 00 02, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+EZapiChannel_Config (Channel = 0, Command = EZapiChannel_ConfigCmd_SetTOPparsePortParams, IF_Type = AUXILIARY,  IF_Number = LOOPBACK_1,   User_Data[0] = 0x20 00 00 71,       User_Data[1] = 0x00 80 00 03, User_Data[2] =0x00000000 , User_Data[3] = 0x00000000);
+*/
+
+
+EZlog_SetLog( File,                                            
+              DRV, DRV_API + DRV_PRM_PUP, 
+              None);
+
+EZapiChannel_Finalize( Channel = 0 );
+
+EZapiChannel_Go( Channel = 0 );
